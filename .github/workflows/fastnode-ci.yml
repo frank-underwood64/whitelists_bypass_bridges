@@ -1,0 +1,41 @@
+name: FastNode CI
+
+on:
+  push:
+    paths: ['fastnode/**', '.github/workflows/fastnode-ci.yml']
+  pull_request:
+    paths: ['fastnode/**', '.github/workflows/fastnode-ci.yml']
+
+defaults:
+  run:
+    working-directory: fastnode
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check
+        run: bash -n fastnode.sh
+      - name: ShellCheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          shellcheck -S warning fastnode.sh
+      - name: Version and help work without root
+        run: |
+          ./fastnode.sh --version
+          ./fastnode.sh --help >/dev/null
+          ./fastnode.sh --lang ru --help >/dev/null
+
+  # Experimental: dry-run changes nothing, but runner images vary, so a failure here is informational.
+  dry-run:
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dry-run install
+        run: |
+          sudo ./fastnode.sh install --dry-run --yes \
+            --domain node.example.com --email ci@example.com \
+            --panel-ip 203.0.113.5 --skip-dns-check
