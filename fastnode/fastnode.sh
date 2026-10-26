@@ -367,7 +367,7 @@ setup_ui() {
 }
 
 hr() {
-  local n=${1:-66} ch="─"
+  local n=66 ch="─"
   if (( ! UTF )); then ch="-"; fi
   printf '  %s' "$C_DIM"
   local i; for ((i = 0; i < n; i++)); do printf '%s' "$ch"; done
