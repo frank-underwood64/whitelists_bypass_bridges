@@ -1,0 +1,282 @@
+# 1) Создать Template в Subscription -> Xray JSON -> +
+# 2) Прикрепить к нужному хосту из настроек хоста
+
+{
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8",
+      {
+        "address": "77.88.8.8",
+        "domains": [
+          "geosite:category-ru"
+        ]
+      }
+    ],
+    "queryStrategy": "UseIPv4"
+  },
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ],
+        "outboundTag": "block"
+      },
+      {
+        "type": "field", # фикс недоходящих уведомлений
+        "domain": [
+          "domain:mtalk.google.com",
+          "domain:push.apple.com",
+          "domain:api.push.apple.com",
+          "domain:push-apple.com.akadns.net",
+          "domain:*-courier.push.apple.com"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "domain:trbcdn.net",
+          "domain:ya.ru",
+          "domain:yandex.ru",
+          "domain:yandex.net",
+          "domain:yandex.com",
+          "domain:yastatic.net",
+          "domain:yandexcloud.net",
+          "full:go.yandex",
+          "domain:kinopoisk.ru",
+          "domain:vk.com",
+          "domain:vk.ru",
+          "domain:vkvideo.ru",
+          "domain:okcdn.ru",
+          "domain:ok.ru",
+          "domain:userapi.com",
+          "domain:mycdn.me",
+          "domain:cdn-vk.ru",
+          "domain:cdnsix.vk-com.ru",
+          "domain:clstorage.net",
+          "domain:mail.ru",
+          "domain:imgsmail.ru",
+          "domain:mrgcdn.ru",
+          "domain:max.ru",
+          "domain:oneme.ru",
+          "domain:dzen.ru",
+          "domain:rutube.ru",
+          "domain:gosuslugi.ru",
+          "domain:kremlin.ru",
+          "domain:government.ru",
+          "domain:duma.gov.ru",
+          "domain:council.gov.ru",
+          "domain:genproc.gov.ru",
+          "domain:mchs.gov.ru",
+          "domain:nalog.gov.ru",
+          "domain:roskazna.gov.ru",
+          "domain:cbr.ru",
+          "domain:vybory.gov.ru",
+          "domain:digital.gov.ru",
+          "domain:pochta.ru",
+          "domain:rsv.ru",
+          "domain:myrosmol.ru",
+          "domain:pervye.ru",
+          "domain:xn--b1aew.xn--p1ai",
+          "domain:xn--90aivcdt6dxbc.xn--p1ai",
+          "domain:xn--90acagbhgpca7c8c7f.xn--p1ai",
+          "domain:xn--80ajghhoc2aj1c8b.xn--p1ai",
+          "domain:alfabank.ru",
+          "domain:vtb.ru",
+          "domain:psbank.ru",
+          "domain:gazprombank.ru",
+          "domain:gpb.ru",
+          "domain:cdn-tinkoff.ru",
+          "domain:tbank.ru",
+          "domain:tbank-online.com",
+          "domain:nspk.ru",
+          "domain:mironline.ru",
+          "domain:moex.com",
+          "domain:sber.ru",
+          "domain:sberbank.ru",
+          "domain:sravni.ru",
+          "domain:t-j.ru",
+          "domain:ozon.ru",
+          "domain:wildberries.ru",
+          "domain:avito.ru",
+          "domain:avito.st",
+          "domain:megamarket.ru",
+          "domain:megamarket.tech",
+          "domain:x5.ru",
+          "domain:x5static.net",
+          "domain:5ka.ru",
+          "domain:perekrestok.ru",
+          "domain:vkusvill.ru",
+          "domain:lenta.com",
+          "domain:auchan.ru",
+          "domain:metro-cc.ru",
+          "domain:myspar.ru",
+          "domain:magnit.ru",
+          "domain:dixy.ru",
+          "domain:okeydostavka.ru",
+          "domain:food.ru",
+          "domain:azbukavkusa.ru",
+          "domain:dodopizza.ru",
+          "domain:burgerking.ru",
+          "domain:burgerkingrus.ru",
+          "domain:vkusnoitochka.ru",
+          "domain:cdek.ru",
+          "domain:kuper.ru",
+          "domain:samokat.ru",
+          "domain:dostavista.ru",
+          "domain:dellin.ru",
+          "domain:rzd.ru",
+          "domain:tutu.ru",
+          "domain:aeroflot.ru",
+          "domain:pobeda.aero",
+          "domain:flypobeda.ru",
+          "domain:s7.ru",
+          "domain:sirena-travel.ru",
+          "domain:taximaxim.ru",
+          "domain:delimobil.ru",
+          "domain:belkacar.ru",
+          "domain:citydrive.ru",
+          "domain:rt.ru",
+          "domain:mts.ru",
+          "domain:mymts.ru",
+          "domain:mts-link.ru",
+          "domain:mtsbank.ru",
+          "domain:mtscdn.ru",
+          "domain:kion.ru",
+          "domain:beeline.ru",
+          "domain:megafon.ru",
+          "domain:t2.ru",
+          "domain:sbermobile.ru",
+          "domain:motiv.me",
+          "domain:motivtelecom.ru",
+          "domain:ertelecom.ru",
+          "domain:nextmobile.ru",
+          "domain:vtbmobile.ru",
+          "domain:rustore.ru",
+          "domain:urentbike.ru",
+          "domain:vgtrk.ru",
+          "domain:1tv.ru",
+          "domain:ntv.ru",
+          "domain:tvzvezda.ru",
+          "domain:russia.tv",
+          "domain:ria.ru",
+          "domain:tass.ru",
+          "domain:kommersant.ru",
+          "domain:kp.ru",
+          "domain:gazeta.ru",
+          "domain:lenta.ru",
+          "domain:rbc.ru",
+          "domain:iz.ru",
+          "domain:vedomosti.ru",
+          "domain:rg.ru",
+          "domain:pnp.ru",
+          "domain:rambler.ru",
+          "domain:rambler-co.ru",
+          "domain:aif.ru",
+          "domain:mk.ru",
+          "domain:forbes.ru",
+          "domain:okko.tv",
+          "domain:ivi.tv",
+          "domain:premier.one",
+          "domain:360.ru",
+          "domain:2gis.ru",
+          "domain:2gis.com",
+          "domain:domclick.ru",
+          "domain:cian.ru",
+          "domain:medsi.ru",
+          "domain:mamadeti.ru",
+          "domain:1c.ru",
+          "domain:tensor.ru",
+          "domain:kontur.ru",
+          "domain:kontur.host",
+          "domain:trueconf.ru",
+          "domain:bitrix24.ru",
+          "domain:hr-link.ru",
+          "domain:evotor.ru",
+          "domain:tildaapi.com",
+          "domain:reg.ru",
+          "domain:rosseti.ru",
+          "domain:rosatom.ru",
+          "domain:aoglonass.ru",
+          "domain:atomcharge.ru",
+          "domain:hh.ru",
+          "domain:khl.ru",
+          "domain:sport24.ru",
+          "domain:matchtv.ru",
+          "domain:gismeteo.ru",
+          "domain:drive2.ru",
+          "domain:ruwiki.ru",
+          "full:ru.ruwiki.ru",
+          "domain:tns-counter.ru"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "type": "field",
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "network": "tcp,udp",
+        "outboundTag": "proxy"
+      }
+    ],
+    "domainMatcher": "hybrid",
+    "domainStrategy": "AsIs"
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "udp": true,
+        "auth": "noauth"
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    },
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "127.0.0.1",
+      "protocol": "http",
+      "settings": {
+        "allowTransparent": false
+      },
+      "sniffing": {
+        "enabled": true,
+        "routeOnly": false,
+        "destOverride": [
+          "http",
+          "tls",
+          "quic"
+        ]
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ]
+}
