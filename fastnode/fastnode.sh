@@ -356,6 +356,7 @@ setup_ui() {
   case "${LC_ALL:-${LC_CTYPE:-${LANG:-}}}" in *[Uu][Tt][Ff]-8*|*[Uu][Tt][Ff]8*) UTF=1 ;; esac
   COLS=${COLUMNS:-0}
   if (( COLS == 0 )); then COLS=$(tput cols 2>/dev/null || echo 80); fi
+  if [[ -n ${FASTNODE_ASCII:-} ]]; then UTF=0; fi   # force the plain-ASCII logo and symbols
   if (( UTF )); then
     SYM_ARROW="▸" SYM_OK="✔" SYM_WARN="▲" SYM_ERR="✖" SYM_DOT="●" SYM_OFF="○" SYM_MID="·"
   fi
@@ -1420,7 +1421,7 @@ menu_draw() {
   if (( IS_TTY )); then printf '\e[H\e[2J'; fi
   printf '\n'; banner; hr; sysline; statusbar; hr
   local i; for i in 1 2 3 4 5 6 7 8 9; do menu_item "$i"; done
-  printf '   %sl%s  %s\n' "$C_CYAN$C_BOLD" "$C_RESET" "$(t mn_l)"
+  printf '   %sL%s  %s\n' "$C_CYAN$C_BOLD" "$C_RESET" "$(t mn_l)"
   printf '   %s0%s  %s\n' "$C_CYAN$C_BOLD" "$C_RESET" "$(t mn_0)"
   hr
 }

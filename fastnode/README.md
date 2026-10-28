@@ -68,7 +68,7 @@ fastnode logs            the log, colours stripped (attach it to issues)
 ```
 
 `fastnode --help` lists every option. The script installs itself as `/usr/local/bin/fastnode` after `install`.
-The interface language follows `$LANG` (Russian or English); switch it in the menu (`l`) or with `--lang ru|en`.
+The interface language follows `$LANG` (Russian or English); switch it in the menu (`L`) or with `--lang ru|en`.
 
 ## After the script: the panel side
 
